@@ -10,7 +10,7 @@ permalink: "/posts/boomscat-case-study/index.html"
 
 Boomscat hadn't performed in years. When they finally booked their return show, the plan included a talk back at the end of the night. A chance for the audience to hear directly from the artists about why now, why this, why again.
 
-That is where Mouse and Matter came in.
+That is where Mouse &amp; Matter came in.
 
 ## The Problem With Most Talk Backs
 
@@ -20,7 +20,7 @@ The issue is not the artist. It is the prep. Nobody hands an artist the real que
 
 ## What We Built Instead
 
-Before the show, Mouse and Matter built a primer. Six questions designed to get Boomscat thinking days before the event, not seconds before the mic turned on. Questions like what does this project mean to you now versus when you started, and what do you need this return to do for you personally, not for the fans, not for the music.
+Before the show, Mouse &amp; Matter built a primer. Six questions designed to get Boomscat thinking days before the event, not seconds before the mic turned on. Questions like what does this project mean to you now versus when you started, and what do you need this return to do for you personally, not for the fans, not for the music.
 
 One question was held back entirely and saved for the room. The kind of question where the pause before the answer says as much as the answer itself.
 
@@ -38,7 +38,7 @@ That is not a metric. That is the entire point.
 
 ## The Takeaway
 
-This was not a marketing campaign. It was not a funnel. It was one show, one band, one night. But the principle underneath it is the same one Mouse and Matter applies to every product, every brand, every team we work with.
+This was not a marketing campaign. It was not a funnel. It was one show, one band, one night. But the principle underneath it is the same one Mouse &amp; Matter applies to every product, every brand, every team we work with.
 
 People do not connect with polish. They connect with honesty that had room to surface. The job is not to script that honesty. It is to build the conditions that let it show up.
 
