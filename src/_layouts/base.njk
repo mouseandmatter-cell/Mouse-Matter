@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }} — Mouse & Matter</title>
 <meta name="description" content="{{ excerpt or 'Product marketing and strategy. We find the connection everyone else missed.' }}">
-<meta property="og:title" content="{{ title }} — Mouse & Matter">
+<meta property="og:title" content="{{ title }} — Mouse &amp; Matter">
 <meta property="og:description" content="{{ excerpt or 'Product marketing and strategy. We find the connection everyone else missed.' }}">
 <meta property="og:image" content="https://mouseandmatter.netlify.app/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mouseandmatter.netlify.app{{ page.url }}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ title }} — Mouse & Matter">
+<meta name="twitter:title" content="{{ title }} — Mouse &amp; Matter">
 <meta name="twitter:description" content="{{ excerpt or 'Product marketing and strategy. We find the connection everyone else missed.' }}">
 <meta name="twitter:image" content="https://mouseandmatter.netlify.app/assets/og-image.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -183,7 +183,8 @@
 
 <div class="contact-section" id="contact">
   <h2 class="contact-headline">Ready to find<br><em>your flow?</em></h2>
-  <p class="contact-sub">Tell us what you are working on. That is always where we start. Prefer to skip the questions? <a href="mailto:mouseandmatter@gmail.com" style="color: var(--gold);">Just email us directly.</a></p>
+  <p class="contact-sub">We start with a conversation. No pitch. Just an honest look at where you are and what your product marketing function needs to move forward. Prefer to skip the form? <a href="mailto:mouseandmatter@gmail.com" style="color: var(--gold);">Just email us directly.</a></p>
+  <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.75rem;">Not sure where to start? Put the playlist on. Let the music help you find the words. <a href="https://open.spotify.com/playlist/64FeN2h5SNHPuKBxS1jevP" target="_blank" style="color: var(--signal); text-decoration: none;">Dig In. Find Your Flow. →</a></p>
   <form id="contactForm">
     <div class="q-block">
       <label class="q-label" for="q1">What are you building?</label>
@@ -191,9 +192,19 @@
       <textarea id="q1" name="What are you building" placeholder="The real version, not the pitch..." required></textarea>
     </div>
     <div class="q-block">
-      <label class="q-label" for="q2">If your product had a theme song what would it be and why?</label>
+      <label class="q-label" for="q2">Where are you stuck right now?</label>
+      <span class="q-hint">Be specific. The more honest you are here the better we can help.</span>
+      <textarea id="q2" name="Where are you stuck right now" placeholder="What is not working or not moving..."></textarea>
+    </div>
+    <div class="q-block">
+      <label class="q-label" for="q3">What have you tried already?</label>
+      <span class="q-hint">Agencies, consultants, internal efforts, anything. No judgment.</span>
+      <textarea id="q3" name="What have you tried already" placeholder="What has and has not worked..."></textarea>
+    </div>
+    <div class="q-block">
+      <label class="q-label" for="q4">If your product had a theme song what would it be and why?</label>
       <span class="q-hint">First instinct.</span>
-      <textarea id="q2" name="Theme song and why" placeholder="No wrong answer..."></textarea>
+      <textarea id="q4" name="Theme song and why" placeholder="No wrong answer..."></textarea>
     </div>
     <div class="two-col">
       <div class="q-block">
@@ -213,7 +224,7 @@
   </div>
 </div>
 
-<a class="spotify-link" href="https://open.spotify.com/playlist/64FeN2h5SNHPuKBxS1jevP" target="_blank" aria-label="Open Mouse and Matter playlist on Spotify">
+<a class="spotify-link" href="https://open.spotify.com/playlist/64FeN2h5SNHPuKBxS1jevP" target="_blank" aria-label="Open Mouse &amp; Matter playlist on Spotify">
   <svg class="spotify-link-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 11-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.622.622 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.519-.972c3.632-1.102 8.147-.568 11.234 1.328a.78.78 0 01.257 1.072zm.105-2.835c-3.223-1.914-8.54-2.09-11.618-1.156a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.954 1.608z"/>
   </svg>
@@ -221,7 +232,7 @@
 </a>
 
 <footer>
-  <span class="footer-brand">Mouse & Matter</span>
+  <span class="footer-brand">Mouse &amp; Matter</span>
   <div class="footer-links">
     <a href="mailto:mouseandmatter@gmail.com">Email</a>
     <a href="https://www.linkedin.com/in/adrienne-m-93764712/" target="_blank">LinkedIn</a>
@@ -249,6 +260,7 @@
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
 
   // Mobile nav
   const navToggle = document.getElementById('navToggle');
