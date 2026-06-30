@@ -48,4 +48,4 @@ That is what good product marketing should feel like for a brand. Not a single i
 
 ---
 
-*Mouse & Matter finds the connection everyone else missed. [Let's talk.](https://mouseandmatter.netlify.app/#contact)*
+*Mouse &amp; Matter finds the connection everyone else missed. [Let's talk.](https://mouseandmatter.netlify.app/#contact)*
