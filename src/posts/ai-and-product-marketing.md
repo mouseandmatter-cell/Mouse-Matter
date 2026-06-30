@@ -8,13 +8,13 @@ permalink: "/posts/ai-and-product-marketing/index.html"
 
 # AI Has a Place. So Do the Humans Companies Keep Cutting to Make Room for It.
 
-I built the Mouse and Matter website using AI. I am not going to pretend otherwise and I am not going to apologize for it either. It executed a build I designed. I gave it the data, the voice, the palette, the structure, the words. It assembled what I told it to assemble.
+I built the Mouse &amp; Matter website using AI. I am not going to pretend otherwise and I am not going to apologize for it either. It executed a build I designed. I gave it the data, the voice, the palette, the structure, the words. It assembled what I told it to assemble.
 
 That distinction matters more than most companies right now seem willing to admit.
 
 ## What AI Actually Did Here
 
-AI did not come up with Mouse and Matter. It did not decide the brand was a Selector instead of a DJ. It did not know that "dig in" mattered more than "explore" or that the playlist needed to be called Find Your Flow. It did not sit with me through a dozen rounds of language until something finally felt true instead of just correct.
+AI did not come up with Mouse &amp; Matter. It did not decide the brand was a Selector instead of a DJ. It did not know that "dig in" mattered more than "explore" or that the playlist needed to be called Find Your Flow. It did not sit with me through a dozen rounds of language until something finally felt true instead of just correct.
 
 It executed. Fast, competent execution of decisions a human had already made.
 
