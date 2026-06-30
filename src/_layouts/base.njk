@@ -103,7 +103,7 @@
     background: var(--panel); border-radius: 8px; padding: 2.5rem 2rem;
     max-width: 680px; margin: 1rem auto 5rem;
   }
-  .contact-headline { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-light); margin-bottom: .6rem; }
+  .contact-headline { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 6vw, 1.8rem); color: var(--gold-light); margin-bottom: .6rem; }
   .contact-headline em { font-style: italic; color: var(--gold); }
   .contact-sub { font-size: 14px; line-height: 1.7; color: var(--muted); margin-bottom: 2rem; }
   .q-block { margin-bottom: 1.25rem; }
@@ -146,7 +146,12 @@
   .spotify-link:hover { border-color: var(--signal); background: var(--darker); }
   .spotify-link-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--signal); }
   .spotify-link-icon { width: 14px; height: 14px; fill: var(--signal); flex-shrink: 0; }
-  @media (max-width: 640px) { .spotify-link { bottom: 1rem; right: 1rem; } }
+  @media (max-width: 640px) { .spotify-link { bottom: 5rem; right: 1rem; } }
+  @media (max-width: 640px) { 
+    .contact-section { margin: 1rem 1.25rem 5rem; padding: 1.75rem 1.25rem; }
+    .contact-sub { font-size: 13px; }
+    .q-hint { font-size: 8px; }
+  }
 
   {{ content_css | safe }}
 </style>
