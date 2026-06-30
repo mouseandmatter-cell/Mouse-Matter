@@ -3,7 +3,7 @@ layout: base.njk
 title: "Home"
 content_css: |
   section { padding: 7rem 5rem; max-width: 1200px; margin: 0 auto; }
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 8rem; position: relative; max-width: 1200px; margin: 0 auto; padding-left: 5rem; padding-right: 5rem; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 8rem; padding-bottom: 4rem; position: relative; max-width: 1200px; margin: 0 auto; padding-left: 5rem; padding-right: 5rem; }
   .hero-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 12px; }
   .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
   .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.08; color: var(--gold-light); margin-bottom: 2rem; max-width: 800px; }
@@ -46,6 +46,11 @@ content_css: |
   .also-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
   .also-list { display: flex; flex-wrap: wrap; gap: .6rem; }
   .also-pill { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .08em; color: var(--signal); border: 1px solid rgba(138,171,114,0.2); padding: .35rem .85rem; border-radius: 20px; }
+  .hero-wave {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.15;
+  }
+  @media (max-width: 640px) { .hero-wave { opacity: 0.07; } }
   .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 900px) {
@@ -67,7 +72,7 @@ content_css: |
   }
 ---
 <section class="hero">
-  <div class="hero-tag">Product Marketing and Strategy</div>
+  <div class="hero-tag">Fractional Product Marketing Leadership</div>
   <h1 class="hero-headline fade-up">
     I used to make<br>the news <em>make sense.</em><br>Now I do that<br>for products.
   </h1>
@@ -75,13 +80,13 @@ content_css: |
     I find the connection everyone else missed.
   </p>
   <p class="hero-body fade-up" style="transition-delay:.2s">
-    We work with founders, small teams, and brands who know they have something worth saying but have not found the right way to say it yet.
+    Senior product marketing leadership without the full time hire. We work with founders, small teams, and growing companies who have a product that works but have never answered the question that actually closes deals: why should this matter to the person who needs it most.
   </p>
   <div class="hero-selector fade-up" style="transition-delay:.3s">
     <div class="hero-selector-label">The Selector</div>
-    <p>In music they call it being a <strong>Selector.</strong> The one who knows which piece goes where, what comes next, and how to keep the room moving without ever breaking the flow. That is what a great PMM does. That is Mouse and Matter.</p>
+    <p>In music they call it being a <strong>Selector.</strong> The one who knows which piece goes where, what comes next, and how to keep the room moving without ever breaking the flow. That is what a great PMM does. That is Mouse &amp; Matter.</p>
   </div>
-  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
     <a href="#contact" class="hero-cta fade-up" style="transition-delay:.4s">Find your flow</a>
     <a href="#writing" class="fade-up" style="transition-delay:.45s; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid rgba(212,149,42,0.25); padding-bottom: 2px;">See the work first</a>
   </div>
@@ -96,11 +101,10 @@ content_css: |
 
 <section id="work">
   <div class="section-tag">How We Work</div>
-  <h2 class="work-headline fade-up">A Selector does not stop the flow<br>to find the <em>next sound.</em></h2>
-  <p class="work-body fade-up">They already did the work before they ever touched the decks.</p>
-  <p class="work-body fade-up">By the time we are in the room together the hard part is already done. The audience research. The competitive analysis. The messaging architecture. The questions nobody thought to ask. We build the structure first so everything that comes after it holds.</p>
-  <p class="work-body fade-up">You will not just see the answer. You will see everything you did not know was possible.</p>
-  <p class="work-body fade-up">The goal is not one good moment. The goal is to find your flow and keep you growing and evolving. A great set does not end at the first song. It takes you on a journey the whole night. That is what Mouse and Matter does for your brand.</p>
+  <h2 class="work-headline fade-up">The first thing we ask is simple.<br><em>Tell me about your product.</em></h2>
+  <p class="work-body fade-up">Not the pitch. Not the deck. Just tell us what it does and who it helps in your own words. Because how you answer that question tells us everything we need to know about where the real work begins.</p>
+  <p class="work-body fade-up">What we are listening for is not just the strategy gaps. We are listening for the vision that has not been fully named yet. The audience that has not been fully seen. The version of your product that is bigger than the one you have been pitching. Most teams have been so close to what they built that they can only see one version of it. We create the space to think bigger. Then we build the structure, the messaging, the go to market motion, and the team alignment that turns that bigger vision into something the market can actually feel.</p>
+  <p class="work-body fade-up">Most PMMs come in and optimize what exists. We come in and help you see what is possible. That is where we start. And it starts the moment you say tell me about your product.</p>
   <div class="work-proof fade-up">
     <div class="work-proof-label">Recent Work</div>
     <p>We built the talk-back primer for Boomscat's return show after years away. <a href="/posts/boomscat-case-study/" style="color: var(--gold);">Read what happened →</a></p>
@@ -136,43 +140,61 @@ content_css: |
 </div>
 
 <section id="services">
-  <div class="section-tag">What We Do</div>
-  <div class="services-grid">
+  <div class="section-tag">The Work</div>
+
+  <h2 class="work-headline fade-up">This is not a consulting engagement.<br><em>This is your PMM function.</em></h2>
+
+  <p class="work-body fade-up">Mouse &amp; Matter embeds into your business the way a senior PMM Director would. We are in your customer success conversations. We are sitting with your sales team understanding where deals stall. We are talking to product about what the market needs next. And we are building the materials, the messaging, and the strategy that ties all of it together. Every week. Not as a vendor. As a partner who owns the go to market motion alongside you.</p>
+
+  <div class="services-grid" style="margin-top: 3rem;">
     <div class="service-item fade-up">
       <span class="service-num">01</span>
       <div>
-        <div class="service-name">GTM Strategy</div>
-        <p class="service-desc">Most teams start moving before they know where they are going. We map the full picture first. Who you are talking to, why they should care, and exactly how to reach them. So when you move you move with intention.</p>
+        <div class="service-name">Listen to the Market</div>
+        <p class="service-desc">We start where most PMMs skip. Customer success conversations. Sales calls. Win loss analysis. What people say is broken. What they love. What they wish existed. We sit in those conversations consistently because the market is always talking and most companies are not listening closely enough. The signal is there. We find it and turn it into strategy.</p>
       </div>
     </div>
+
     <div class="service-item fade-up">
       <span class="service-num">02</span>
       <div>
-        <div class="service-name">Competitive Analysis</div>
-        <p class="service-desc">We study the room before you walk in. Who is already there, what they are saying, where the gaps are, and where your opening is. You will never wonder where you stand again.</p>
+        <div class="service-name">Read the Room</div>
+        <p class="service-desc">We track what your competitors are doing, where they are showing up, how they talk about their product, and where their gaps are. We build and continuously refine the personas that reflect who your audience actually is, not just their job title but their full life and what they need right now. Most teams have been inside their product so long they can only see one version of it. We pull you out of the tunnel and up to the full view.</p>
       </div>
     </div>
+
     <div class="service-item fade-up">
       <span class="service-num">03</span>
       <div>
-        <div class="service-name">Messaging and Positioning</div>
-        <p class="service-desc">This is where everything clicks. We build the framework that makes your product make sense to the people who need it most. Not just what you say but how it lands, where it lives, and why it moves people to act.</p>
+        <div class="service-name">Connect with Product</div>
+        <p class="service-desc">We sit with your product team regularly. Not to report what marketing needs. But to bring them what the market is saying and help shape what gets built next. New launches, feature prioritization, positioning for what is coming. We make sure product and go to market are never moving in different directions. That alignment is where growth actually comes from.</p>
       </div>
     </div>
   </div>
-  <div class="fade-up">
-    <div class="also-label">The work continues with</div>
+
+  <div class="service-item fade-up" style="margin-top: 3rem; border: 1px solid var(--darker); border-radius: 4px; padding: 1.75rem;">
+    <span class="service-num" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal); display: block; margin-bottom: .75rem;">04</span>
+    <div class="service-name" style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold-light); margin-bottom: .4rem; display: block;">Enable the Team</div>
+    <p class="service-desc">All that research, all that listening, all that cross-functional work has to turn into something the team can actually use. The messaging framework that gives everyone the same language. The sales materials that answer the objections before they come up. The website content and webinars that bring the right buyers in and start the conversation before anyone picks up the phone. The conference presence that makes your brand impossible to ignore in the rooms that matter. We build all of it. And we build it so your team can run it confidently without us needing to be in every room.</p>
+  </div>
+
+  <div class="fade-up" style="margin-top: 2.5rem;">
+    <div class="also-label">The work includes</div>
     <div class="also-list">
-      <span class="also-pill">Audience Research</span>
+      <span class="also-pill">GTM Strategy</span>
+      <span class="also-pill">Competitive Analysis</span>
+      <span class="also-pill">Messaging and Positioning</span>
       <span class="also-pill">Persona Development</span>
       <span class="also-pill">Sales Enablement</span>
-      <span class="also-pill">Lifecycle and Email Strategy</span>
-      <span class="also-pill">Presentation Development</span>
+      <span class="also-pill">Product Launch Strategy</span>
+      <span class="also-pill">Customer and Win Loss Research</span>
+      <span class="also-pill">Webinar and Content Strategy</span>
+      <span class="also-pill">Conference and Event Marketing</span>
     </div>
   </div>
 
   <p class="fade-up" style="margin-top: 2.5rem; font-size: 15px; line-height: 1.7; color: var(--muted);">
-    Not sure which one you need? That is normal. Most people don't know until someone digs in with them. <a href="#contact" style="color: var(--gold);">Tell us what you're building</a> and we'll figure out the rest together.
+    We start with a conversation. No pitch. Just an honest look at where you are and what your product marketing function needs to move forward. <a href="#contact" style="color: var(--gold);">Tell us what you are building.</a>
   </p>
 </section>
 
