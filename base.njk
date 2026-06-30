@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} — Mouse & Matter</title>
+<meta name="description" content="{{ excerpt or 'Product marketing and strategy. We find the connection everyone else missed.' }}">
+<meta property="og:title" content="{{ title }} — Mouse & Matter">
+<meta property="og:description" content="{{ excerpt or 'Product marketing and strategy. We find the connection everyone else missed.' }}">
+<meta property="og:image" content="https://mouseandmatter.netlify.app/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mouseandmatter.netlify.app{{ page.url }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }} — Mouse & Matter">
+<meta name="twitter:description" content="{{ excerpt or 'Product marketing and strategy. We find the connection everyone else missed.' }}">
+<meta name="twitter:image" content="https://mouseandmatter.netlify.app/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0908; --panel: #131210; --gold: #D4952A; --gold-light: #E8C878;
+    --signal: #8AAB72; --orange: #EA580C; --muted: #b89d6e; --dim: #4a3f2e; --darker: #1e1c19;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--gold-light); font-family: 'Karla', sans-serif; overflow-x: hidden; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2.5rem; background: rgba(10,9,8,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,149,42,0.15);
+  }
+  .nav-wordmark { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--gold); text-decoration: none; }
+  .nav-wordmark em { font-style: italic; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* MOBILE NAV */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .4rem;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .nav-toggle span {
+    width: 20px;
+    height: 1.5px;
+    background: var(--gold);
+    display: block;
+  }
+  .nav-mobile-panel {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: min(280px, 75vw);
+    background: var(--panel);
+    border-left: 1px solid rgba(212,149,42,0.15);
+    z-index: 150;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .nav-mobile-panel.open { transform: translateX(0); }
+  .nav-mobile-panel a {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gold-light); text-decoration: none;
+  }
+  .nav-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 140;
+  }
+  .nav-overlay.open { display: block; }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+  }
+  footer {
+    border-top: 1px solid var(--darker); padding: 1.5rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 900px; margin: 0 auto;
+  }
+  .footer-brand { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--gold); }
+  @media (max-width: 640px) { footer { padding: 1.25rem; flex-direction: column; gap: .75rem; text-align: center; } }
+
+  /* CONTACT - shared on every page */
+  .contact-section {
+    background: var(--panel); border-radius: 8px; padding: 2.5rem 2rem;
+    max-width: 680px; margin: 1rem auto 5rem;
+  }
+  .contact-headline { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-light); margin-bottom: .6rem; }
+  .contact-headline em { font-style: italic; color: var(--gold); }
+  .contact-sub { font-size: 14px; line-height: 1.7; color: var(--muted); margin-bottom: 2rem; }
+  .q-block { margin-bottom: 1.25rem; }
+  .q-label { display: block; font-size: 14px; color: var(--gold-light); font-weight: 500; margin-bottom: .35rem; }
+  .q-hint { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .55rem; }
+  textarea {
+    width: 100%; background: var(--bg); border: 1px solid #2e2a22; border-radius: 4px;
+    color: var(--gold-light); font-family: 'Karla', sans-serif; font-size: 14px;
+    padding: .75rem 1rem; resize: vertical; min-height: 80px; outline: none;
+  }
+  textarea:focus { border-color: var(--gold); }
+  textarea::placeholder { color: #3a3020; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
+  input[type="text"], input[type="email"] {
+    width: 100%; background: var(--bg); border: 1px solid #2e2a22; border-radius: 4px;
+    color: var(--gold-light); font-family: 'Karla', sans-serif; font-size: 14px;
+    padding: .7rem 1rem; outline: none;
+  }
+  input:focus { border-color: var(--gold); }
+  input::placeholder { color: #3a3020; }
+  .submit-btn {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    background: var(--gold); color: var(--bg); font-weight: 500; border: none; border-radius: 4px;
+    padding: .85rem 1.75rem; cursor: pointer; transition: background .2s, color .2s; margin-top: .5rem;
+  }
+  .submit-btn:hover { background: var(--orange); color: #F5F5F5; }
+  .success { display: none; background: var(--bg); border-left: 2px solid var(--signal); padding: 1.1rem 1.4rem; border-radius: 0 4px 4px 0; margin-top: 1.25rem; }
+  .success.show { display: block; }
+  .success-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--signal); margin-bottom: .35rem; }
+  .success-body { font-size: 14px; color: var(--muted); }
+
+  /* SPOTIFY LINK BUTTON */
+  .spotify-link {
+    position: fixed; bottom: 1.25rem; right: 1.5rem; z-index: 201;
+    background: var(--panel); border: 1px solid rgba(138,171,114,0.3); border-radius: 30px;
+    padding: .55rem 1.1rem; display: flex; align-items: center; gap: .5rem;
+    cursor: pointer; text-decoration: none; transition: border-color .2s, background .2s;
+  }
+  .spotify-link:hover { border-color: var(--signal); background: var(--darker); }
+  .spotify-link-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--signal); }
+  .spotify-link-icon { width: 14px; height: 14px; fill: var(--signal); flex-shrink: 0; }
+  @media (max-width: 640px) { .spotify-link { bottom: 1rem; right: 1rem; } }
+
+  {{ content_css | safe }}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-wordmark">Mouse <em>&</em> Matter</a>
+  <ul class="nav-links">
+    <li><a href="/#work">The Work</a></li>
+    <li><a href="/#writing">Writing</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#contact">Let's Talk</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-overlay" id="navOverlay"></div>
+<div class="nav-mobile-panel" id="navMobilePanel">
+  <a href="/#work">The Work</a>
+  <a href="/#writing">Writing</a>
+  <a href="/#services">Services</a>
+  <a href="/#contact">Let's Talk</a>
+</div>
+
+{{ content | safe }}
+
+<div class="contact-section" id="contact">
+  <h2 class="contact-headline">Ready to find<br><em>your flow?</em></h2>
+  <p class="contact-sub">Tell us what you are working on. That is always where we start. Prefer to skip the questions? <a href="mailto:mouseandmatter@gmail.com" style="color: var(--gold);">Just email us directly.</a></p>
+  <form id="contactForm">
+    <div class="q-block">
+      <label class="q-label" for="q1">What are you building?</label>
+      <span class="q-hint">Tell us like you are explaining it to a friend at dinner, not pitching it in a boardroom.</span>
+      <textarea id="q1" name="What are you building" placeholder="The real version, not the pitch..." required></textarea>
+    </div>
+    <div class="q-block">
+      <label class="q-label" for="q2">If your product had a theme song what would it be and why?</label>
+      <span class="q-hint">First instinct.</span>
+      <textarea id="q2" name="Theme song and why" placeholder="No wrong answer..."></textarea>
+    </div>
+    <div class="two-col">
+      <div class="q-block">
+        <label class="q-label" for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="q-block">
+        <label class="q-label" for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+      </div>
+    </div>
+    <button type="submit" class="submit-btn">Send it over</button>
+  </form>
+  <div class="success" id="successMsg">
+    <div class="success-title">We got you.</div>
+    <div class="success-body">Your note is on its way. We will be in touch soon to start the conversation.</div>
+  </div>
+</div>
+
+<a class="spotify-link" href="https://open.spotify.com/playlist/64FeN2h5SNHPuKBxS1jevP" target="_blank" aria-label="Open Mouse and Matter playlist on Spotify">
+  <svg class="spotify-link-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 11-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.622.622 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.519-.972c3.632-1.102 8.147-.568 11.234 1.328a.78.78 0 01.257 1.072zm.105-2.835c-3.223-1.914-8.54-2.09-11.618-1.156a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.954 1.608z"/>
+  </svg>
+  <span class="spotify-link-label">Dig In. Find Your Flow.</span>
+</a>
+
+<footer>
+  <span class="footer-brand">Mouse & Matter</span>
+  <div class="footer-links">
+    <a href="mailto:mouseandmatter@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/adrienne-m-93764712/" target="_blank">LinkedIn</a>
+  </div>
+  <span class="footer-brand">We find the connection everyone else missed.</span>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://formspree.io/f/meedbyoj', {
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('successMsg').classList.add('show');
+      }
+    } catch(err) { console.error(err); }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navPanel = document.getElementById('navMobilePanel');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function closeNav() {
+    navPanel.classList.remove('open');
+    navOverlay.classList.remove('open');
+  }
+
+  navToggle.addEventListener('click', () => {
+    navPanel.classList.toggle('open');
+    navOverlay.classList.toggle('open');
+  });
+  navOverlay.addEventListener('click', closeNav);
+  navPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+</script>
+
+</body>
+</html>
