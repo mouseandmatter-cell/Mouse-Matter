@@ -2,7 +2,7 @@
 layout: post.njk
 title: "AI Has a Place. So Do the Humans Companies Keep Cutting to Make Room for It."
 excerpt: "I built this site using AI. I'm not going to pretend otherwise, and I'm not going to apologize for it. But the thinking was mine the whole way through, and that distinction matters."
-date: 2026-06-30
+date: 2026-06-15
 permalink: "/posts/ai-and-product-marketing/index.html"
 ---
 
