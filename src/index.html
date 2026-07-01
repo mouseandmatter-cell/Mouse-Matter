@@ -39,9 +39,9 @@ content_css: |
   .post-excerpt { font-size: 13px; line-height: 1.7; color: var(--muted); }
   .post-read { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: .6rem; display: inline-block; }
   .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
-  .service-item { padding: 1.75rem; border: 1px solid var(--darker); border-radius: 4px; display: block; }
+  .service-item { padding: 1.75rem; border: 1px solid #2e2a22; border-radius: 4px; display: block; }
   .service-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal); display: block; margin-bottom: .75rem; }
-  .service-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold-light); margin-bottom: .4rem; display: block; }
+  .service-name { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; display: block; font-weight: 500; }
   .service-desc { font-size: 14px; line-height: 1.7; color: var(--muted); }
   .also-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
   .also-list { display: flex; flex-wrap: wrap; gap: .6rem; }
@@ -74,21 +74,14 @@ content_css: |
 <section class="hero">
   <div class="hero-tag">Fractional Product Marketing Leadership</div>
   <h1 class="hero-headline fade-up">
-    I used to make<br>the news <em>make sense.</em><br>Now I do that<br>for products.
+    Every product has a sound.<br><em>Most people just cannot hear it yet.</em>
   </h1>
   <p class="hero-body fade-up" style="transition-delay:.15s">
-    I find the connection everyone else missed.
+    We are the ones who find it.
   </p>
-  <p class="hero-body fade-up" style="transition-delay:.2s">
-    Senior product marketing leadership without the full time hire. We work with founders, small teams, and growing companies who have a product that works but have never answered the question that actually closes deals: why should this matter to the person who needs it most.
-  </p>
-  <div class="hero-selector fade-up" style="transition-delay:.3s">
-    <div class="hero-selector-label">The Selector</div>
-    <p>In music they call it being a <strong>Selector.</strong> The one who knows which piece goes where, what comes next, and how to keep the room moving without ever breaking the flow. That is what a great PMM does. That is Mouse &amp; Matter.</p>
-  </div>
   <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
     <a href="#contact" class="hero-cta fade-up" style="transition-delay:.4s">Find your flow</a>
-    <a href="#writing" class="fade-up" style="transition-delay:.45s; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid rgba(212,149,42,0.25); padding-bottom: 2px;">See the work first</a>
+    <a href="#work" class="fade-up" style="transition-delay:.45s; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid rgba(212,149,42,0.25); padding-bottom: 2px;">See the work first</a>
   </div>
 </section>
 
@@ -99,36 +92,54 @@ content_css: |
   </svg>
 </div>
 
-<section id="work">
+<section id="problem" style="background: rgba(138,171,114,0.04); border-top: 1px solid rgba(138,171,114,0.15); border-bottom: 1px solid rgba(138,171,114,0.15);">
+  <div class="section-tag" style="color: var(--signal);">Sound Familiar</div>
+  <h2 class="work-headline fade-up">You know what your product does.<br><em>Does your audience?</em></h2>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0;">
+    <div style="background: rgba(138,171,114,0.06); border-left: 2px solid var(--signal); padding: 1.25rem 1.5rem; border-radius: 0 4px 4px 0;">
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.8; color: var(--gold-light);">Your sales team is losing deals they should win and nobody can agree on why.</p>
+    </div>
+    <div style="background: rgba(138,171,114,0.06); border-left: 2px solid var(--signal); padding: 1.25rem 1.5rem; border-radius: 0 4px 4px 0;">
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.8; color: var(--gold-light);">Your best customers cannot explain to a friend why they use you.</p>
+    </div>
+    <div style="background: rgba(138,171,114,0.06); border-left: 2px solid var(--signal); padding: 1.25rem 1.5rem; border-radius: 0 4px 4px 0;">
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.8; color: var(--gold-light);">Your team describes the product differently depending on who is in the room.</p>
+    </div>
+    <div style="background: rgba(138,171,114,0.06); border-left: 2px solid var(--signal); padding: 1.25rem 1.5rem; border-radius: 0 4px 4px 0;">
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.8; color: var(--gold-light);">You have tried campaigns, agencies, and content. The number that matters is not moving.</p>
+    </div>
+  </div>
+
+  <p class="work-body fade-up" style="max-width: 640px;">That is not a product problem. That is a product marketing problem. And it is exactly what we fix.</p>
+  <p class="work-body fade-up" style="max-width: 640px;">Most companies know what they built. We find the words, the strategy, and the structure that make everyone else care. Senior product marketing leadership without the full time hire.</p>
+</section>
+
+<div class="section-divider">
+  <svg viewBox="0 0 900 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="0,10 30,10 35,4 40,16 45,6 50,14 55,8 60,12 65,3 70,17 75,7 80,13 85,5 90,15 95,9 100,11 120,10 150,10 155,6 160,14 165,8 170,12 175,4 180,16 185,7 190,13 195,5 200,15 210,10 240,10 245,8 250,12 255,5 260,15 265,9 270,11 280,10 310,10 315,4 320,16 325,7 330,13 335,6 340,14 345,9 350,11 360,10 400,10 405,6 410,14 415,8 420,12 425,3 430,17 435,7 440,13 450,10 480,10 485,5 490,15 495,9 500,11 510,10 540,10 545,7 550,13 555,4 560,16 565,8 570,12 580,10 620,10 625,6 630,14 635,9 640,11 645,5 650,15 660,10 700,10 705,8 710,12 715,4 720,16 725,7 730,13 740,10 780,10 785,6 790,14 795,9 800,11 810,10 840,10 845,5 850,15 855,8 860,12 870,10 900,10"
+      fill="none" stroke="#2e2a20" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<section id="how-we-work">
   <div class="section-tag">How We Work</div>
+  <div style="background: var(--panel); border-left: 2px solid var(--gold); padding: 1rem 1.25rem; border-radius: 0 4px 4px 0; max-width: 580px; margin-bottom: 2.5rem;">
+    <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem;">The Selector</p>
+    <p style="font-size: 14px; line-height: 1.7; color: var(--muted);">In music the Selector is the one who hears what comes next before anyone else does. That is how we work.</p>
+  </div>
   <h2 class="work-headline fade-up">The first thing we ask is simple.<br><em>Tell me about your product.</em></h2>
   <p class="work-body fade-up">Not the pitch. Not the deck. Just tell us what it does and who it helps in your own words. Because how you answer that question tells us everything we need to know about where the real work begins.</p>
-  <p class="work-body fade-up">What we are listening for is not just the strategy gaps. We are listening for the vision that has not been fully named yet. The audience that has not been fully seen. The version of your product that is bigger than the one you have been pitching. Most teams have been so close to what they built that they can only see one version of it. We create the space to think bigger. Then we build the structure, the messaging, the go to market motion, and the team alignment that turns that bigger vision into something the market can actually feel.</p>
-  <p class="work-body fade-up">Most PMMs come in and optimize what exists. We come in and help you see what is possible. That is where we start. And it starts the moment you say tell me about your product.</p>
+  <p class="work-body fade-up">We are listening for the vision that has not been fully named yet. The audience that has not been fully seen. The version of your product that is bigger than the one you have been pitching.</p>
+
+  <blockquote style="border-left: 3px solid var(--gold); margin: 2.5rem 0; padding: 1.25rem 1.75rem; background: var(--panel); border-radius: 0 4px 4px 0; max-width: 680px;">
+    <p style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; line-height: 1.3; color: var(--gold-light);">Most teams have been so close to what they built that they can only see one version of it. We create the space to think bigger.</p>
+  </blockquote>
+
+  <p class="work-body fade-up">Then we build the structure, the messaging, the go to market motion, and the team alignment that turns that bigger vision into something the market can actually feel.</p>
   <div class="work-proof fade-up">
     <div class="work-proof-label">Recent Work</div>
     <p>We built the talk-back primer for Boomscat's return show after years away. <a href="/posts/boomscat-case-study/" style="color: var(--gold);">Read what happened →</a></p>
-  </div>
-</section>
-
-<div class="section-divider">
-  <svg viewBox="0 0 900 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <polyline points="0,10 30,10 35,4 40,16 45,6 50,14 55,8 60,12 65,3 70,17 75,7 80,13 85,5 90,15 95,9 100,11 120,10 150,10 155,6 160,14 165,8 170,12 175,4 180,16 185,7 190,13 195,5 200,15 210,10 240,10 245,8 250,12 255,5 260,15 265,9 270,11 280,10 310,10 315,4 320,16 325,7 330,13 335,6 340,14 345,9 350,11 360,10 400,10 405,6 410,14 415,8 420,12 425,3 430,17 435,7 440,13 450,10 480,10 485,5 490,15 495,9 500,11 510,10 540,10 545,7 550,13 555,4 560,16 565,8 570,12 580,10 620,10 625,6 630,14 635,9 640,11 645,5 650,15 660,10 700,10 705,8 710,12 715,4 720,16 725,7 730,13 740,10 780,10 785,6 790,14 795,9 800,11 810,10 840,10 845,5 850,15 855,8 860,12 870,10 900,10"
-      fill="none" stroke="#2e2a20" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</div>
-
-<section id="writing">
-  <div class="section-tag">Writing</div>
-  <div class="post-list">
-    {% for post in collections.posts %}
-    <a href="{{ post.url }}" class="post-card fade-up">
-      <div class="post-date">{{ post.data.date | readableDate }}</div>
-      <div class="post-title">{{ post.data.title }}</div>
-      <p class="post-excerpt">{{ post.data.excerpt }}</p>
-      <span class="post-read">Read it →</span>
-    </a>
-    {% endfor %}
   </div>
 </section>
 
@@ -174,8 +185,8 @@ content_css: |
 
   <div class="service-item fade-up" style="margin-top: 3rem; border: 1px solid var(--darker); border-radius: 4px; padding: 1.75rem;">
     <span class="service-num" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal); display: block; margin-bottom: .75rem;">04</span>
-    <div class="service-name" style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold-light); margin-bottom: .4rem; display: block;">Enable the Team</div>
-    <p class="service-desc">All that research, all that listening, all that cross-functional work has to turn into something the team can actually use. The messaging framework that gives everyone the same language. The sales materials that answer the objections before they come up. The website content and webinars that bring the right buyers in and start the conversation before anyone picks up the phone. The conference presence that makes your brand impossible to ignore in the rooms that matter. We build all of it. And we build it so your team can run it confidently without us needing to be in every room.</p>
+    <div class="service-name">Enable the Team</div>
+    <p class="service-desc">All that research, all that listening, all that cross-functional work has to become something the team can actually use. We build the messaging framework that gives everyone the same language. The strategy behind the sales materials, the content, the webinars, and the conference presence. We do not just hand you a plan. We build the system that makes your team capable of executing it confidently without us in every room.</p>
   </div>
 
   <div class="fade-up" style="margin-top: 2.5rem;">
@@ -196,6 +207,27 @@ content_css: |
   <p class="fade-up" style="margin-top: 2.5rem; font-size: 15px; line-height: 1.7; color: var(--muted);">
     We start with a conversation. No pitch. Just an honest look at where you are and what your product marketing function needs to move forward. <a href="#contact" style="color: var(--gold);">Tell us what you are building.</a>
   </p>
+</section>
+
+<div class="section-divider">
+  <svg viewBox="0 0 900 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="0,10 30,10 35,4 40,16 45,6 50,14 55,8 60,12 65,3 70,17 75,7 80,13 85,5 90,15 95,9 100,11 120,10 150,10 155,6 160,14 165,8 170,12 175,4 180,16 185,7 190,13 195,5 200,15 210,10 240,10 245,8 250,12 255,5 260,15 265,9 270,11 280,10 310,10 315,4 320,16 325,7 330,13 335,6 340,14 345,9 350,11 360,10 400,10 405,6 410,14 415,8 420,12 425,3 430,17 435,7 440,13 450,10 480,10 485,5 490,15 495,9 500,11 510,10 540,10 545,7 550,13 555,4 560,16 565,8 570,12 580,10 620,10 625,6 630,14 635,9 640,11 645,5 650,15 660,10 700,10 705,8 710,12 715,4 720,16 725,7 730,13 740,10 780,10 785,6 790,14 795,9 800,11 810,10 840,10 845,5 850,15 855,8 860,12 870,10 900,10"
+      fill="none" stroke="#2e2a20" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<section id="writing">
+  <div class="section-tag">The Thinking</div>
+  <div class="post-list">
+    {% for post in collections.posts %}
+    <a href="{{ post.url }}" class="post-card fade-up">
+      <div class="post-date">{{ post.data.date | readableDate }}</div>
+      <div class="post-title">{{ post.data.title }}</div>
+      <p class="post-excerpt">{{ post.data.excerpt }}</p>
+      <span class="post-read">Read it →</span>
+    </a>
+    {% endfor %}
+  </div>
 </section>
 
 <div class="section-divider">
