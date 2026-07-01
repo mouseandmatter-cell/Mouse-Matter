@@ -1,22 +1,22 @@
 ---
 layout: post.njk
-title: "I Used to Make the News Make Sense. Now I Do That for Products."
-excerpt: "In music they call it being a Selector. The one who knows which piece goes where, what comes next, and how to keep the room moving. That's what a great PMM does."
-date: 2026-06-30
+title: "Every Product Has a Sound. Here Is How We Find It."
+excerpt: "In music the Selector is the one who hears what comes next before anyone else does. That is how Mouse & Matter approaches product marketing."
+date: 2026-06-01
 permalink: "/posts/selector-method/index.html"
 ---
 
-# I Used to Make the News Make Sense. Now I Do That for Products.
+# Every Product Has a Sound. Here Is How We Find It.
 
-For years my job was to take chaotic, fast moving, high stakes information and make it land clearly for a mass audience in real time. There was no waiting for the perfect framework. You had minutes, sometimes seconds, to find the actual story buried inside the noise and get it out in a way people could understand and act on.
+Every product already has the story it needs to move the right person. Most companies just have not found the person who can hear it yet.
 
-That job does not exist on a resume template. But it turns out it is exactly the skill product marketing has been asking for the whole time.
+That is the whole job. Not writing copy. Not building frameworks. Listening until the real signal surfaces and then building everything around it. The research, the positioning, the go to market motion. All of it starts with hearing what is already there.
 
 ## The Skill Nobody Names
 
 Most product marketing training teaches you frameworks. Personas, messaging hierarchies, positioning statements. All useful. None of it teaches you the thing that actually matters most, which is how to find the one true thing buried inside everything a company is trying to say about itself.
 
-That is not a framework skill. That is a newsroom skill. It is the ability to sit inside chaos, resist the urge to organize it too early, and wait for the actual signal to surface.
+That is not a framework skill. It is the ability to sit inside chaos, resist the urge to organize it too early, and wait for the actual signal to surface.
 
 In music, the person who does this is called a Selector. Not the performer. Not even always the most technically skilled musician in the room. The Selector is the one who knows which piece goes where, what comes next, and how to keep a room moving without ever breaking the flow. They are not creating the music. They are finding the connections inside music that already exists and putting them in an order that makes people feel something they could not get to on their own.
 
