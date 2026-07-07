@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Saunders Suite — Mouse & Matter</title>
+<meta name="description" content="How Mouse & Matter designed and built a personal AI operating system for a founder with ADHD — five apps, one morning briefing, fully automated.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0908;
+    --panel: #131210;
+    --gold: #D4952A;
+    --gold-light: #E8C878;
+    --signal: #8AAB72;
+    --orange: #EA580C;
+    --muted: #b89d6e;
+    --dim: #4a3f2e;
+    --darker: #1e1c19;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; background: #0A0908; }
+  body { background: #0A0908; color: #E8C878; font-family: 'Karla', sans-serif; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2.5rem;
+    background: rgba(10,9,8,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,149,42,0.15);
+  }
+  .nav-wordmark { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--gold); text-decoration: none; }
+  .nav-wordmark em { font-style: italic; }
+  .nav-back { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color .2s; }
+  .nav-back:hover { color: var(--gold); }
+
+  .hero {
+    max-width: 900px; margin: 0 auto;
+    padding: 9rem 5rem 5rem;
+  }
+
+  .case-tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--signal);
+    display: flex; align-items: center; gap: 12px; margin-bottom: 2rem;
+  }
+  .case-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--signal); }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.1; color: var(--gold-light); margin-bottom: 1.5rem;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-sub { font-size: 18px; line-height: 1.8; color: var(--muted); max-width: 620px; }
+
+  .meta-row {
+    display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid var(--darker);
+    flex-wrap: wrap;
+  }
+  .meta-item { }
+  .meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-bottom: .35rem; }
+  .meta-value { font-size: 14px; color: var(--muted); }
+
+  .divider {
+    max-width: 900px; margin: 0 auto; padding: 0 5rem;
+  }
+  .divider svg { width: 100%; height: 40px; display: block; }
+
+  section { max-width: 900px; margin: 0 auto; padding: 4rem 5rem; }
+
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 1.75rem;
+  }
+  .section-tag::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: .2; max-width: 60px; }
+
+  h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; color: var(--gold-light); margin-bottom: 1.25rem; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.85; color: var(--muted); margin-bottom: 1.25rem; max-width: 640px; }
+
+  .problem-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+    margin: 2rem 0;
+  }
+  .problem-card {
+    background: rgba(138,171,114,0.06); border-left: 2px solid var(--signal);
+    padding: 1.25rem 1.5rem; border-radius: 0 4px 4px 0;
+  }
+  .problem-card p { font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.8; color: var(--gold-light); margin: 0; max-width: none; }
+
+  .app-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin: 2rem 0;
+  }
+  .app-card {
+    background: var(--panel); border: 1px solid var(--darker);
+    border-radius: 4px; padding: 1.5rem;
+  }
+  .app-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--signal); letter-spacing: .1em; margin-bottom: .5rem; }
+  .app-name { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+  .app-desc { font-size: 13px; line-height: 1.65; color: var(--muted); }
+
+  .system-block {
+    background: var(--panel); border-left: 3px solid var(--gold);
+    padding: 1.75rem 2rem; border-radius: 0 4px 4px 0; margin: 2rem 0;
+  }
+  .system-block-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+  .system-block p { font-size: 15px; line-height: 1.75; color: var(--muted); margin: 0; max-width: none; }
+
+  .outcome-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2rem 0;
+  }
+  .outcome-card {
+    padding: 1.5rem; border: 1px solid var(--darker); border-radius: 4px;
+  }
+  .outcome-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--signal); margin-bottom: .5rem; }
+  .outcome-text { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+  blockquote {
+    border-left: 3px solid var(--gold); margin: 2.5rem 0;
+    padding: 1.25rem 1.75rem; background: var(--panel); border-radius: 0 4px 4px 0;
+    max-width: 640px;
+  }
+  blockquote p { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; line-height: 1.35; color: var(--gold-light); margin: 0; max-width: none; }
+
+  .replication-block {
+    background: rgba(212,149,42,0.05); border: 1px solid rgba(212,149,42,0.15);
+    border-radius: 4px; padding: 2rem; margin: 2rem 0; max-width: 640px;
+  }
+  .replication-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+  .replication-block p { margin: 0; max-width: none; }
+
+  .cta-section {
+    background: var(--panel); border-radius: 8px;
+    padding: 3rem; max-width: 900px; margin: 2rem auto 6rem;
+  }
+  .cta-section h2 { margin-bottom: .75rem; }
+  .cta-sub { font-size: 15px; line-height: 1.7; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .cta-btn {
+    display: inline-block; font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    background: var(--gold); color: var(--bg); font-weight: 500;
+    padding: .85rem 2rem; border-radius: 4px; text-decoration: none;
+    transition: background .25s, color .25s;
+  }
+  .cta-btn:hover { background: var(--orange); color: #F5F5F5; }
+
+  footer {
+    border-top: 1px solid var(--darker); padding: 1.5rem 5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 900px; margin: 0 auto;
+  }
+  .footer-brand { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
+
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero { padding: 8rem 2.5rem 3rem; }
+    section { padding: 3rem 2.5rem; }
+    .divider { padding: 0 2.5rem; }
+    .app-grid { grid-template-columns: 1fr 1fr; }
+    .problem-cards { grid-template-columns: 1fr; }
+    .outcome-row { grid-template-columns: 1fr; }
+    footer { padding: 1.5rem 2.5rem; }
+    .cta-section { margin: 2rem 2.5rem 4rem; padding: 2rem; }
+    nav { padding: 1rem 1.25rem; }
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 7rem 1.25rem 2rem; }
+    section { padding: 2.5rem 1.25rem; }
+    .app-grid { grid-template-columns: 1fr; }
+    .meta-row { gap: 1.5rem; }
+    footer { padding: 1.25rem; flex-direction: column; gap: .5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-wordmark">Mouse <em>&</em> Matter</a>
+  <a href="/#writing" class="nav-back">← Back to the work</a>
+</nav>
+
+<div class="hero">
+  <div class="case-tag">Case Study</div>
+  <h1>When the system is the <em>problem,</em><br>build a new one.</h1>
+  <p class="hero-sub">How Mouse & Matter designed and built a personal AI operating system for a founder living with ADHD — five apps, one daily briefing, fully automated.</p>
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="meta-label">Client</div>
+      <div class="meta-value">Adrienne Moore / Self</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Category</div>
+      <div class="meta-value">AI Product Design & Automation</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Tools</div>
+      <div class="meta-value">Claude API · Make.com · Google Sheets · HTML/JS</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Timeline</div>
+      <div class="meta-value">2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">
+  <svg viewBox="0 0 900 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="19" width="3" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="5" y="16" width="3" height="10" fill="#2e2a20" rx="0.5"/>
+    <rect x="10" y="12" width="3" height="18" fill="#2e2a20" rx="0.5"/>
+    <rect x="15" y="17" width="2" height="8" fill="#2e2a20" rx="0.5"/>
+    <rect x="19" y="20" width="2" height="2" fill="#2e2a20" rx="0.5"/>
+    <rect x="25" y="14" width="3" height="14" fill="#D4952A" rx="0.5" opacity=".5"/>
+    <rect x="30" y="18" width="2" height="6" fill="#2e2a20" rx="0.5"/>
+    <rect x="34" y="10" width="3" height="22" fill="#2e2a20" rx="0.5"/>
+    <rect x="39" y="15" width="3" height="12" fill="#2e2a20" rx="0.5"/>
+    <rect x="44" y="20" width="2" height="2" fill="#2e2a20" rx="0.5"/>
+    <rect x="50" y="17" width="2" height="8" fill="#2e2a20" rx="0.5"/>
+    <rect x="54" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".7"/>
+    <rect x="60" y="13" width="3" height="16" fill="#2e2a20" rx="0.5"/>
+    <rect x="65" y="19" width="2" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="70" y="11" width="3" height="20" fill="#2e2a20" rx="0.5"/>
+    <rect x="75" y="16" width="2" height="10" fill="#2e2a20" rx="0.5"/>
+    <rect x="80" y="20" width="2" height="2" fill="#2e2a20" rx="0.5"/>
+    <rect x="86" y="14" width="3" height="14" fill="#2e2a20" rx="0.5"/>
+    <rect x="91" y="6" width="4" height="30" fill="#D4952A" rx="0.5" opacity=".6"/>
+    <rect x="97" y="16" width="3" height="10" fill="#2e2a20" rx="0.5"/>
+    <rect x="150" y="19" width="3" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="155" y="14" width="3" height="14" fill="#2e2a20" rx="0.5"/>
+    <rect x="160" y="9" width="4" height="24" fill="#D4952A" rx="0.5" opacity=".5"/>
+    <rect x="166" y="15" width="3" height="12" fill="#2e2a20" rx="0.5"/>
+    <rect x="171" y="19" width="2" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="177" y="11" width="3" height="20" fill="#2e2a20" rx="0.5"/>
+    <rect x="182" y="17" width="2" height="8" fill="#2e2a20" rx="0.5"/>
+    <rect x="250" y="20" width="2" height="2" fill="#2e2a20" rx="0.5"/>
+    <rect x="255" y="13" width="3" height="16" fill="#2e2a20" rx="0.5"/>
+    <rect x="260" y="7" width="4" height="28" fill="#D4952A" rx="0.5" opacity=".8"/>
+    <rect x="266" y="14" width="3" height="14" fill="#2e2a20" rx="0.5"/>
+    <rect x="271" y="18" width="2" height="6" fill="#2e2a20" rx="0.5"/>
+    <rect x="275" y="10" width="3" height="22" fill="#2e2a20" rx="0.5"/>
+    <rect x="280" y="16" width="2" height="10" fill="#2e2a20" rx="0.5"/>
+    <rect x="350" y="19" width="3" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="355" y="15" width="3" height="12" fill="#2e2a20" rx="0.5"/>
+    <rect x="360" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".6"/>
+    <rect x="366" y="13" width="3" height="16" fill="#2e2a20" rx="0.5"/>
+    <rect x="371" y="19" width="2" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="450" y="18" width="2" height="6" fill="#2e2a20" rx="0.5"/>
+    <rect x="454" y="11" width="3" height="20" fill="#2e2a20" rx="0.5"/>
+    <rect x="459" y="6" width="4" height="30" fill="#D4952A" rx="0.5" opacity=".7"/>
+    <rect x="465" y="14" width="3" height="14" fill="#2e2a20" rx="0.5"/>
+    <rect x="470" y="19" width="2" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="475" y="12" width="3" height="18" fill="#2e2a20" rx="0.5"/>
+    <rect x="550" y="19" width="3" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="555" y="16" width="3" height="10" fill="#2e2a20" rx="0.5"/>
+    <rect x="560" y="9" width="4" height="24" fill="#D4952A" rx="0.5" opacity=".5"/>
+    <rect x="566" y="14" width="3" height="14" fill="#2e2a20" rx="0.5"/>
+    <rect x="571" y="19" width="2" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="650" y="18" width="2" height="6" fill="#2e2a20" rx="0.5"/>
+    <rect x="654" y="10" width="3" height="22" fill="#2e2a20" rx="0.5"/>
+    <rect x="659" y="5" width="4" height="32" fill="#D4952A" rx="0.5" opacity=".8"/>
+    <rect x="665" y="13" width="3" height="16" fill="#2e2a20" rx="0.5"/>
+    <rect x="670" y="18" width="2" height="6" fill="#2e2a20" rx="0.5"/>
+    <rect x="674" y="11" width="3" height="20" fill="#2e2a20" rx="0.5"/>
+    <rect x="750" y="19" width="3" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="755" y="15" width="3" height="12" fill="#2e2a20" rx="0.5"/>
+    <rect x="760" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".6"/>
+    <rect x="766" y="14" width="3" height="14" fill="#2e2a20" rx="0.5"/>
+    <rect x="771" y="19" width="2" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="776" y="12" width="3" height="18" fill="#2e2a20" rx="0.5"/>
+    <rect x="850" y="18" width="2" height="6" fill="#2e2a20" rx="0.5"/>
+    <rect x="854" y="11" width="3" height="20" fill="#2e2a20" rx="0.5"/>
+    <rect x="859" y="7" width="4" height="28" fill="#D4952A" rx="0.5" opacity=".5"/>
+    <rect x="865" y="15" width="3" height="12" fill="#2e2a20" rx="0.5"/>
+    <rect x="870" y="19" width="2" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="875" y="13" width="3" height="16" fill="#2e2a20" rx="0.5"/>
+    <rect x="880" y="19" width="3" height="4" fill="#2e2a20" rx="0.5"/>
+    <rect x="885" y="16" width="3" height="10" fill="#2e2a20" rx="0.5"/>
+    <rect x="890" y="20" width="2" height="2" fill="#2e2a20" rx="0.5"/>
+    <rect x="895" y="17" width="3" height="8" fill="#2e2a20" rx="0.5"/>
+  </svg>
+</div>
+
+<section>
+  <div class="section-tag">The Problem</div>
+  <h2>The friction was the problem.<br>Not the <em>work.</em></h2>
+  <p>Most productivity systems fail not because the tools are bad but because using them requires too many steps. For someone managing ADHD alongside a full time job, a consulting business, a PhD, and multiple personal disciplines, opening five separate apps to log progress is not a system. It is a chore that stops getting done.</p>
+  <p>The work was happening. The tracking was not. And without tracking, the data that powers a good morning briefing does not exist. The whole system falls apart at the point of least friction.</p>
+
+  <div class="problem-cards">
+    <div class="problem-card"><p>Five separate apps with no unified view meant starting from scratch every time you opened one.</p></div>
+    <div class="problem-card"><p>Without consistent check-ins the morning briefing had no real data to pull from.</p></div>
+    <div class="problem-card"><p>Each app was built for a specific purpose but none of them talked to each other.</p></div>
+    <div class="problem-card"><p>The system was smart but the friction of using it was defeating the purpose.</p></div>
+  </div>
+</section>
+
+<div class="divider">
+  <svg viewBox="0 0 900 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="19" width="3" height="4" fill="#2e2a20" rx="0.5"/><rect x="5" y="16" width="3" height="10" fill="#2e2a20" rx="0.5"/><rect x="10" y="12" width="3" height="18" fill="#2e2a20" rx="0.5"/><rect x="25" y="14" width="3" height="14" fill="#D4952A" rx="0.5" opacity=".5"/><rect x="54" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".7"/><rect x="91" y="6" width="4" height="30" fill="#D4952A" rx="0.5" opacity=".6"/><rect x="160" y="9" width="4" height="24" fill="#D4952A" rx="0.5" opacity=".5"/><rect x="260" y="7" width="4" height="28" fill="#D4952A" rx="0.5" opacity=".8"/><rect x="360" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".6"/><rect x="459" y="6" width="4" height="30" fill="#D4952A" rx="0.5" opacity=".7"/><rect x="560" y="9" width="4" height="24" fill="#D4952A" rx="0.5" opacity=".5"/><rect x="659" y="5" width="4" height="32" fill="#D4952A" rx="0.5" opacity=".8"/><rect x="760" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".6"/><rect x="859" y="7" width="4" height="28" fill="#D4952A" rx="0.5" opacity=".5"/>
+  </svg>
+</div>
+
+<section>
+  <div class="section-tag">The Approach</div>
+  <h2>Five apps. One system.<br><em>Zero manual coordination.</em></h2>
+  <p>Instead of building one more app to replace the five, we designed a suite where each tool owned its specific domain and a shared intelligence layer connected all of them. The goal was to make check-ins feel like a natural part of using the app, not a separate administrative task.</p>
+
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-num">01</div>
+      <div class="app-name">Saunders HQ</div>
+      <div class="app-desc">Command center. Daily overview, priorities, and the single place to start every morning without opening anything else first.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-num">02</div>
+      <div class="app-name">Saunders Forge</div>
+      <div class="app-desc">Skill development tracker. Weekly check-ins for soldering, languages, and technical disciplines with progress visualization.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-num">03</div>
+      <div class="app-name">Saunders Scholar</div>
+      <div class="app-desc">PhD research companion. Module tracking, reading logs, and writing progress for a 13-module doctoral program.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-num">04</div>
+      <div class="app-name">Trigger Time</div>
+      <div class="app-desc">Firearms training tracker. Session logs, drill performance, and range data with historical progress tracking.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-num">05</div>
+      <div class="app-name">Saunders Focus</div>
+      <div class="app-desc">ADHD-friendly task management. Time-boxed work sessions, priority queuing, and distraction logging.</div>
+    </div>
+  </div>
+
+  <div class="system-block">
+    <div class="system-block-label">The Automation Layer</div>
+    <p>Every app writes to a shared Google Sheet when a check-in is completed. Make.com reads that sheet every morning at 9:45am, passes the data to the Claude API, and Claude generates a personalized three-sentence briefing based on actual activity. No manual input. No stale data. The briefing arrives via ntfy push notification before the day starts.</p>
+  </div>
+</section>
+
+<div class="divider">
+  <svg viewBox="0 0 900 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="19" width="3" height="4" fill="#2e2a20" rx="0.5"/><rect x="25" y="14" width="3" height="14" fill="#D4952A" rx="0.5" opacity=".5"/><rect x="54" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".7"/><rect x="91" y="6" width="4" height="30" fill="#D4952A" rx="0.5" opacity=".6"/><rect x="160" y="9" width="4" height="24" fill="#D4952A" rx="0.5" opacity=".5"/><rect x="260" y="7" width="4" height="28" fill="#D4952A" rx="0.5" opacity=".8"/><rect x="360" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".6"/><rect x="459" y="6" width="4" height="30" fill="#D4952A" rx="0.5" opacity=".7"/><rect x="560" y="9" width="4" height="24" fill="#D4952A" rx="0.5" opacity=".5"/><rect x="659" y="5" width="4" height="32" fill="#D4952A" rx="0.5" opacity=".8"/><rect x="760" y="8" width="4" height="26" fill="#D4952A" rx="0.5" opacity=".6"/><rect x="859" y="7" width="4" height="28" fill="#D4952A" rx="0.5" opacity=".5"/>
+  </svg>
+</div>
+
+<section>
+  <div class="section-tag">The Result</div>
+  <h2>A system that runs itself<br>so you <em>do not have to.</em></h2>
+
+  <blockquote>
+    <p>The best productivity system is one you forget is running.</p>
+  </blockquote>
+
+  <p>The suite solved the original problem by removing the coordination burden entirely. Check-ins happen inside the tool you are already using. The briefing arrives without asking for it. The data stays current because the system updates itself.</p>
+
+  <div class="outcome-row">
+    <div class="outcome-card">
+      <div class="outcome-label">What changed</div>
+      <div class="outcome-text">Five disconnected apps became one coordinated operating system. Daily briefings went from generic to data-driven. Check-in rates improved because friction was removed not willpower demanded.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-label">What it proved</div>
+      <div class="outcome-text">AI-powered workflow automation does not have to be enterprise software. With the right architecture it can be personal, precise, and built by one person in a few weeks.</div>
+    </div>
+  </div>
+
+  <div class="replication-block">
+    <div class="replication-label">Mouse & Matter Capability</div>
+    <p>This is now a replicable offering. If your team is managing multiple tools with no shared intelligence layer, no consistent briefing structure, and no automated data flow between systems, we can design and build it. The architecture exists. The only thing that changes is what goes inside it.</p>
+  </div>
+</section>
+
+<div class="cta-section">
+  <div class="section-tag">Work with us</div>
+  <h2>Ready to find<br><em>your flow?</em></h2>
+  <p class="cta-sub">Tell us what you are building and where the friction is. That is always where we start.</p>
+  <a href="/#contact" class="cta-btn">Start the conversation</a>
+</div>
+
+<footer>
+  <span class="footer-brand">Mouse & Matter</span>
+  <span class="footer-brand">We find the connection everyone else missed.</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
