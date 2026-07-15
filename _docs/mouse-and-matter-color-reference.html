@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mouse & Matter — Color Reference</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Karla:wght@400;500;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #F5F0E8;
+    font-family: 'Karla', sans-serif;
+    padding: 3rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  header {
+    border-bottom: 2px solid #0A0908;
+    padding-bottom: 1.25rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .wordmark {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #0A0908;
+  }
+
+  .wordmark span { color: #D4952A; }
+
+  .doc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9a8c78;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: #0A0908;
+    margin-bottom: 0.4rem;
+  }
+
+  h1 em { font-style: italic; color: #D4952A; }
+
+  .intro {
+    font-size: 14px;
+    color: #9a8c78;
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #D4952A;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: #D4952A;
+    opacity: 0.3;
+    flex: 1;
+  }
+
+  .palette-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: #0A0908;
+    margin-bottom: 1.25rem;
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .swatch {
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .swatch-color {
+    height: 100px;
+    width: 100%;
+  }
+
+  .swatch-info {
+    padding: 0.75rem;
+    background: white;
+  }
+
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0A0908;
+    margin-bottom: 0.2rem;
+  }
+
+  .swatch-hex {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #9a8c78;
+    margin-bottom: 0.4rem;
+  }
+
+  .swatch-use {
+    font-size: 11px;
+    color: #5a5048;
+    line-height: 1.5;
+  }
+
+  .copy-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #D4952A;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #D4952A;
+    padding: 3px 8px;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+
+  .copy-btn:hover { background: #D4952A; color: white; }
+  .copy-btn.copied { background: #8AAB72; border-color: #8AAB72; color: white; }
+
+  .type-section { margin-bottom: 3rem; }
+
+  .type-sample {
+    background: white;
+    border: 1px solid #ddd6c8;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .type-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9a8c78;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0ebe0;
+  }
+
+  .sample-display { font-family: 'DM Serif Display', serif; font-size: 2rem; color: #0A0908; line-height: 1.2; }
+  .sample-display em { font-style: italic; color: #D4952A; }
+  .sample-mono { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #D4952A; }
+  .sample-body { font-family: 'Karla', sans-serif; font-size: 15px; line-height: 1.75; color: #3a3530; }
+
+  .usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .usage-card {
+    background: white;
+    border: 1px solid #ddd6c8;
+    padding: 1rem;
+  }
+
+  .usage-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #D4952A;
+    margin-bottom: 0.5rem;
+  }
+
+  .usage-card-body {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #5a5048;
+  }
+
+  .dark-preview {
+    background: #0A0908;
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .dark-preview-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #D4952A;
+    margin-bottom: 1rem;
+  }
+
+  .dark-preview h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: #E8C878;
+    margin-bottom: 0.5rem;
+  }
+
+  .dark-preview p {
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    color: #9a8c78;
+    line-height: 1.7;
+  }
+
+  .dark-preview .accent-text {
+    color: #D4952A;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    display: block;
+  }
+
+  footer {
+    border-top: 2px solid #0A0908;
+    padding-top: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #9a8c78;
+  }
+
+  .footer-right {
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px;
+    color: #D4952A;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">Mouse <span>&</span> Matter</div>
+  <div class="doc-label">Color & Type Reference</div>
+</header>
+
+<h1>Amber <em>Authority</em></h1>
+<div class="intro">The official Mouse & Matter color palette and typography system. Open this file in any browser for an accurate color reference.</div>
+
+<div class="section-label">Color Palette</div>
+<div class="palette-name">Amber Authority — Full Palette</div>
+
+<div class="swatches">
+
+  <div class="swatch">
+    <div class="swatch-color" style="background:#0A0908;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Background</div>
+      <div class="swatch-hex">#0A0908</div>
+      <div class="swatch-use">Primary dark backgrounds</div>
+      <button class="copy-btn" onclick="copyHex(this, '#0A0908')">Copy</button>
+    </div>
+  </div>
+
+  <div class="swatch">
+    <div class="swatch-color" style="background:#131210;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Panel</div>
+      <div class="swatch-hex">#131210</div>
+      <div class="swatch-use">Cards & sections on dark bg</div>
+      <button class="copy-btn" onclick="copyHex(this, '#131210')">Copy</button>
+    </div>
+  </div>
+
+  <div class="swatch">
+    <div class="swatch-color" style="background:#D4952A;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Accent</div>
+      <div class="swatch-hex">#D4952A</div>
+      <div class="swatch-use">Primary brand color, CTAs, labels, rules</div>
+      <button class="copy-btn" onclick="copyHex(this, '#D4952A')">Copy</button>
+    </div>
+  </div>
+
+  <div class="swatch">
+    <div class="swatch-color" style="background:#E8C878;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Accent Light</div>
+      <div class="swatch-hex">#E8C878</div>
+      <div class="swatch-use">Headlines on dark backgrounds</div>
+      <button class="copy-btn" onclick="copyHex(this, '#E8C878')">Copy</button>
+    </div>
+  </div>
+
+  <div class="swatch">
+    <div class="swatch-color" style="background:#8AAB72;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Signal</div>
+      <div class="swatch-hex">#8AAB72</div>
+      <div class="swatch-use">Tertiary accent, used sparingly</div>
+      <button class="copy-btn" onclick="copyHex(this, '#8AAB72')">Copy</button>
+    </div>
+  </div>
+
+  <div class="swatch">
+    <div class="swatch-color" style="background:#F5F0E8; border-bottom: 1px solid #ddd6c8;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Cream</div>
+      <div class="swatch-hex">#F5F0E8</div>
+      <div class="swatch-use">Light background alternative</div>
+      <button class="copy-btn" onclick="copyHex(this, '#F5F0E8')">Copy</button>
+    </div>
+  </div>
+
+  <div class="swatch">
+    <div class="swatch-color" style="background:#3a3530;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Mid Text</div>
+      <div class="swatch-hex">#3a3530</div>
+      <div class="swatch-use">Body text on light backgrounds</div>
+      <button class="copy-btn" onclick="copyHex(this, '#3a3530')">Copy</button>
+    </div>
+  </div>
+
+  <div class="swatch">
+    <div class="swatch-color" style="background:#9a8c78;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Muted</div>
+      <div class="swatch-hex">#9a8c78</div>
+      <div class="swatch-use">Labels, captions, metadata</div>
+      <button class="copy-btn" onclick="copyHex(this, '#9a8c78')">Copy</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="section-label">Dark Background Preview</div>
+<div class="dark-preview">
+  <div class="dark-preview-label">How colors look on dark background</div>
+  <h2>Every product has a sound.</h2>
+  <p>Mouse & Matter is a fractional PMM practice that helps founder-led and lean marketing teams get clear on who their audience is and how to reach them.</p>
+  <span class="accent-text">Fractional PMM Practice</span>
+</div>
+
+<div class="section-label">Typography</div>
+
+<div class="type-section">
+
+  <div class="type-sample">
+    <div class="type-meta">Display — DM Serif Display · Headlines, hero text, pull quotes</div>
+    <div class="sample-display">Every product has a sound.<br><em>Most people just cannot hear it yet.</em></div>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-meta">Utility — DM Mono · Labels, tags, metadata, captions</div>
+    <div class="sample-mono">Fractional PMM Practice &nbsp;·&nbsp; GTM Messaging Architecture &nbsp;·&nbsp; 2026</div>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-meta">Body — Karla · All body copy, descriptions, paragraphs</div>
+    <div class="sample-body">Mouse & Matter is a fractional PMM practice that helps founder-led and lean marketing teams get clear on who their audience is and how to reach them. We focus on internal alignment first, making sure your team can speak about your product clearly and consistently before a single dollar goes to market.</div>
+  </div>
+
+</div>
+
+<div class="section-label">Usage Rules</div>
+
+<div class="usage-grid">
+  <div class="usage-card">
+    <div class="usage-card-label">Amber is always present</div>
+    <div class="usage-card-body">#D4952A is the heartbeat of the brand. Every asset should have it somewhere — a label, a rule, an accent. Never absent.</div>
+  </div>
+  <div class="usage-card">
+    <div class="usage-card-label">Max three colors per asset</div>
+    <div class="usage-card-body">Pick a background, a text color, and an accent. Do not use the full palette in a single Canva graphic or Instagram post.</div>
+  </div>
+  <div class="usage-card">
+    <div class="usage-card-label">Signal green is supporting only</div>
+    <div class="usage-card-body">#8AAB72 never leads. Use it as a third accent at most — a small tag, a divider, a data point. Never the dominant color.</div>
+  </div>
+  <div class="usage-card">
+    <div class="usage-card-label">The & is always gold</div>
+    <div class="usage-card-body">In the wordmark and anywhere the brand name appears with color available, the ampersand is always #D4952A.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">Color & Type Reference · Amber Authority</div>
+  <div class="footer-right">Mouse & Matter</div>
+</footer>
+
+<script>
+function copyHex(btn, hex) {
+  navigator.clipboard.writeText(hex).then(() => {
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
